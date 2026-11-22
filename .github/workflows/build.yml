@@ -5,17 +5,20 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-java@v4
+      - uses: actions/setup-java@v5
         with:
           distribution: 'temurin'
           java-version: '17'
+          
       - name: Setup Android SDK
         uses: android-actions/setup-android@v4
+        
       - name: Build with Gradle
         run: |
-          echo 'sdk.dir=/opt/android-sdk' > local.properties
-          gradle wrapper --gradle-version 8.5 || true
+          echo "sdk.dir=$ANDROID_HOME" > local.properties
+          gradle wrapper --gradle-version 8.5
           ./gradlew assembleDebug
+          
       - uses: actions/upload-artifact@v4
         with:
           name: app-debug
