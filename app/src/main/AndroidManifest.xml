@@ -3,7 +3,8 @@
     package="com.example.blockdrop">
     <application
         android:label="BlockDrop"
-        android:icon="@mipmap/ic_launcher">
+        android:supportsRtl="true"
+        android:theme="@android:style/Theme.DeviceDefault.NoActionBar">
         <activity android:name=".MainActivity"
             android:exported="true"
             android:screenOrientation="portrait">
